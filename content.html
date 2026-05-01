@@ -126,19 +126,19 @@
   <div class="video-section reveal">
     <p class="video-section-label">Premium Nano</p>
     <div class="video-row">
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video1.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video2.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video3.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video4.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
@@ -151,19 +151,19 @@
   <div class="video-section reveal">
     <p class="video-section-label">UGC Content</p>
     <div class="video-row">
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video5.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video6.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video7.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video8.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
@@ -176,19 +176,19 @@
   <div class="video-section reveal">
     <p class="video-section-label">Micro Content</p>
     <div class="video-row">
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video9.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video10.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video11.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="video-card" onclick="openLightbox(this)">
+      <div class="video-card">
         <video src="videos/video12.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
@@ -196,10 +196,10 @@
   </div>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <div class="lightbox-inner">
-      <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
-      <video id="lightboxVideo" controls playsinline autoplay></video>
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;" onclick="closeLightbox(event)">
+    <div style="position:relative;max-height:90vh;max-width:420px;width:92vw;">
+      <button onclick="closeLightbox()" style="position:absolute;top:-44px;right:0;background:none;border:none;color:white;font-size:30px;cursor:pointer;padding:8px;">&#x2715;</button>
+      <video id="lightboxVideo" controls playsinline style="width:100%;height:auto;max-height:88vh;border-radius:12px;display:block;"></video>
     </div>
   </div>
 
@@ -217,19 +217,28 @@
     });
 
     function openLightbox(card) {
-      const src = card.querySelector('video').src;
+      const video = card.querySelector('video');
+      // Only open if the video has actually loaded data
+      if (video.readyState < 1) return;
       const lbVideo = document.getElementById('lightboxVideo');
-      lbVideo.src = src;
-      lbVideo.play();
-      document.getElementById('lightbox').classList.add('open');
+      lbVideo.src = video.src;
+      const lb = document.getElementById('lightbox'); lb.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      lbVideo.play().catch(() => {});
     }
+
+    // Attach clicks only after DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.video-card, .index-video-card').forEach(card => {
+        card.addEventListener('click', () => openLightbox(card));
+      });
+    });
     function closeLightbox(e) {
       if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
       const lbVideo = document.getElementById('lightboxVideo');
       lbVideo.pause();
       lbVideo.src = '';
-      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox').style.display = 'none';
       document.body.style.overflow = '';
     }
   </script>

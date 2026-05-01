@@ -237,46 +237,46 @@
   <div class="index-video-section reveal">
     <p class="index-video-label">Featured Work</p>
     <div class="index-video-row">
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video1.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home1.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video2.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home2.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video3.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home3.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video4.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home4.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video5.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home5.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video6.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home6.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video7.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home7.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <div class="index-video-card" onclick="openLightbox(this)">
-        <video src="videos/video8.mp4" preload="metadata" playsinline muted></video>
+      <div class="index-video-card">
+        <video src="videos/home8.mp4" preload="metadata" playsinline muted></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
     </div>
   </div>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <div class="lightbox-inner">
-      <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
-      <video id="lightboxVideo" controls playsinline autoplay></video>
+  <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;" onclick="closeLightbox(event)">
+    <div style="position:relative;max-height:90vh;max-width:420px;width:92vw;">
+      <button onclick="closeLightbox()" style="position:absolute;top:-44px;right:0;background:none;border:none;color:white;font-size:30px;cursor:pointer;padding:8px;">&#x2715;</button>
+      <video id="lightboxVideo" controls playsinline style="width:100%;height:auto;max-height:88vh;border-radius:12px;display:block;"></video>
     </div>
   </div>
 
@@ -292,20 +292,29 @@
   <script src="shared.js"></script>
   <script src="main.js"></script>
   <script>
+    // Force thumbnail on mobile
+    document.querySelectorAll('.index-video-card video').forEach(v => {
+      v.load();
+      v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
+    });
+
     function openLightbox(card) {
-      const src = card.querySelector('video').src;
+      const video = card.querySelector('video');
+      if (!video.readyState && video.networkState === 3) return; // no file, do nothing
+      const src = video.src;
+      if (!src || src.endsWith('/')) return;
       const lbVideo = document.getElementById('lightboxVideo');
       lbVideo.src = src;
-      lbVideo.play();
-      document.getElementById('lightbox').classList.add('open');
+      const lb = document.getElementById('lightbox'); lb.style.display = 'flex';
       document.body.style.overflow = 'hidden';
+      lbVideo.play().catch(() => {});
     }
     function closeLightbox(e) {
       if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
       const lbVideo = document.getElementById('lightboxVideo');
       lbVideo.pause();
       lbVideo.src = '';
-      document.getElementById('lightbox').classList.remove('open');
+      document.getElementById('lightbox').style.display = 'none';
       document.body.style.overflow = '';
     }
   </script>

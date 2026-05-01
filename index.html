@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me — 11Eleven Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE-SPECIFIC ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      overflow: hidden;
+    }
+
+    /* Left pane */
+    .hero-left {
+      padding: 60px 48px 60px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--pink-bg);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      gap: 24px;
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-year {
+      position: absolute;
+      top: 56px;
+      right: 48px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 8vw, 110px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--rose);
+      line-height: 0.92;
+      margin-bottom: 40px;
+      letter-spacing: -1px;
+    }
+
+    .hero-qa { display: flex; flex-direction: column; gap: 28px; }
+
+    .hero-q {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .hero-q-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rose);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .hero-q-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .hero-q-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 340px;
+    }
+
+    /* Right pane — photo */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 0;
+      filter: none;
+    }
+    .hero-photo-bg {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #e8c4bc 0%, #c4787a 50%, #9a4848 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-photo-placeholder {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-style: italic;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 32px;
+    }
+
+    /* floating thumbnail */
+    .hero-thumb {
+      position: absolute;
+      bottom: 32px;
+      left: -40px;
+      width: 100px;
+      aspect-ratio: 1;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,.2);
+      background: linear-gradient(135deg,#f2bdb8,#d47878);
+      border: 3px solid var(--white);
+    }
+    .hero-thumb img { width:100%;height:100%;object-fit:cover; }
+
+    /* ── STATS BAR ── */
+    .stats {
+      display: flex;
+      background: var(--pink-mid);
+      border-top: 1px solid rgba(180,50,58,.12);
+      border-bottom: 1px solid rgba(180,50,58,.12);
+    }
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 28px 16px;
+      border-right: 1px solid rgba(180,50,58,.12);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-style: italic;
+      color: var(--rose);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 55vw; min-height: 260px; }
+      .hero-left { padding: 40px 24px; }
+      .hero-year { display: none; }
+      .stats { flex-wrap: wrap; }
+      .stat-item { flex: 1 1 50%; border-bottom: 1px solid rgba(180,50,58,.12); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- hero -->
+  <section class="hero">
+    <div class="hero-left reveal">
+      <div class="hero-eyebrow">
+        <span>Social Agency</span>
+        <span>11Eleven Social</span>
+      </div>
+      <div class="hero-year">2025</div>
+
+      <h1 class="hero-headline">SOCIAL<br/>MEDIA<br/>AGENCY</h1>
+
+      <div class="hero-qa">
+        <div class="hero-q">
+          <div>
+            <div class="hero-q-dot"></div>
+          </div>
+          <div>
+            <div class="hero-q-label">Who We Are</div>
+            <p class="hero-q-body">We're 11Eleven Social — a full-service social media agency built for brands that want to actually grow. Strategy, content, community, and paid media all under one roof.</p>
+          </div>
+        </div>
+        <div class="hero-q">
+          <div>
+            <div class="hero-q-dot"></div>
+          </div>
+          <div>
+            <div class="hero-q-label">What We Do</div>
+            <p class="hero-q-body">We create scroll-stopping content, manage your presence across every platform, and build communities that convert followers into loyal customers.</p>
+          </div>
+        </div>
+        <div class="hero-q">
+          <div>
+            <div class="hero-q-dot"></div>
+          </div>
+          <div>
+            <div class="hero-q-label">How We Can Help</div>
+            <p class="hero-q-body">Whether you need a full brand overhaul or just killer content — we craft strategies that highlight your unique story and drive real results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-photo-bg">
+        <div class="hero-photo-placeholder">
+          ✦<br/><br/>Add your brand<br/>hero photo here<br/><br/>
+          <small style="font-size:11px;opacity:.7">Replace .hero-photo-bg<br/>with an &lt;img&gt; tag</small>
+        </div>
+      </div>
+      <div class="hero-thumb">
+        <!-- Add thumbnail image here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- stats bar -->
+  <div class="stats">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="250">0</div><span class="stat-num" style="font-size:1em">+</span>
+      <div class="stat-label">Brands Worked With</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="4">0</div><span class="stat-num" style="font-size:1em">.8M+</span>
+      <div class="stat-label">Followers Grown</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="98">0</div><span class="stat-num" style="font-size:1em">%</span>
+      <div class="stat-label">Client Retention</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="11">0</div><span class="stat-num" style="font-size:1em">x</span>
+      <div class="stat-label">Avg. ROI Increase</div>
+    </div>
+  </div>
+
+  <!-- bottom cta row -->
+  <div style="text-align:center; padding: 64px 32px 80px; background: var(--pink-light);">
+    <p class="reveal" style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Ready to grow?</p>
+    <h2 class="reveal section-title" style="margin-bottom:28px;">Let's build something<br/><em>remarkable</em> together.</h2>
+    <div class="reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-solid">Get In Touch</a>
+      <a href="clients.html" class="btn">See Our Work</a>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

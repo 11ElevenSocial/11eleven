@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback — 11Eleven Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .feedback-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      align-items: start;
+    }
+    .feedback-photo {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg,#e8c4bc 0%,#c07070 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+    }
+    .feedback-photo-ph {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 20px;
+    }
+    .feedback-right { display: flex; flex-direction: column; gap: 28px; }
+
+    /* chat bubble cards */
+    .bubble-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .bubble {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 18px 20px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+      border: 1px solid rgba(180,50,58,.1);
+      position: relative;
+    }
+    .bubble strong { display: block; color: var(--rose); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+
+    /* analytics numbers */
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .analytic-card {
+      background: var(--pink-mid);
+      border-radius: 8px;
+      padding: 14px 16px;
+      text-align: center;
+    }
+    .analytic-num { font-family: var(--font-display); font-size: 22px; font-style: italic; color: var(--rose); line-height: 1; }
+    .analytic-label { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+    /* star reviews */
+    .star-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .star-card {
+      background: var(--white);
+      border: 1px solid rgba(180,50,58,.1);
+      border-radius: 10px;
+      padding: 16px 18px;
+      flex: 1 1 200px;
+    }
+    .stars { color: #f0a020; font-size: 14px; letter-spacing: 2px; margin-bottom: 8px; }
+    .star-card p { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; }
+    .star-card .author { font-size: 11px; color: var(--rose); margin-top: 8px; font-weight: 600; }
+
+    @media(max-width:768px){
+      .feedback-layout{grid-template-columns:1fr;}
+      .feedback-photo{display:none;}
+      .bubble-grid{grid-template-columns:1fr;}
+      .analytics-grid{grid-template-columns:repeat(2,1fr);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title reveal">FEEDBACK &amp; ANALYTICS</h1>
+
+  <div class="feedback-layout">
+    <div class="feedback-photo">
+      <div class="feedback-photo-ph">Add photo<br/>here<br/><small style="opacity:.6;font-size:11px">Replace with &lt;img&gt;</small></div>
+    </div>
+
+    <div class="feedback-right">
+      <!-- client messages -->
+      <div class="bubble-grid reveal">
+        <div class="bubble"><strong>Client · NovaSkin</strong>"The content looks amazing — we further edits from our side. Could you please send through the final clean versions without the text overlay?"</div>
+        <div class="bubble"><strong>Client · Luxe Studio</strong>"Hi — this is perfect, thank you so much! The content looks awesome 🧡 You are approved! Please kindly send through your invoice so we can process payment."</div>
+        <div class="bubble"><strong>Client · FlowDesk</strong>"Ella was great to work with — quick turnaround times, clear communication, made the process smooth and delivered exactly what we needed. Would definitely work with her again!"</div>
+        <div class="bubble"><strong>Client · Ember Eats</strong>"Thank you so much for the content you created! We're so so grateful for the time and effort you put into it."</div>
+      </div>
+
+      <!-- star reviews -->
+      <div class="star-row reveal">
+        <div class="star-card">
+          <div class="stars">★★★★★</div>
+          <p>"Absolutely blown away. Professional, creative, and the results speak for themselves. Our engagement tripled in 6 weeks."</p>
+          <div class="author">— Arjun K., LUXE Studio</div>
+        </div>
+        <div class="star-card">
+          <div class="stars">★★★★★</div>
+          <p>"11Eleven Social transformed how we show up online. Went from ghost account to 80K followers in under a year."</p>
+          <div class="author">— Priya R., NovaSkin</div>
+        </div>
+        <div class="star-card">
+          <div class="stars">★★★★★</div>
+          <p>"Transparent, data-driven, and genuinely invested in our growth. Rare to find an agency that delivers what they promise."</p>
+          <div class="author">— Sam M., FlowDesk</div>
+        </div>
+      </div>
+
+      <!-- analytics -->
+      <div class="reveal">
+        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:16px;">Content Performance</p>
+        <div class="analytics-grid">
+          <div class="analytic-card"><div class="analytic-num">289K</div><div class="analytic-label">Views</div></div>
+          <div class="analytic-card"><div class="analytic-num">32K</div><div class="analytic-label">Likes</div></div>
+          <div class="analytic-card"><div class="analytic-num">4.4K</div><div class="analytic-label">Shares</div></div>
+          <div class="analytic-card"><div class="analytic-num">75K</div><div class="analytic-label">Reach</div></div>
+          <div class="analytic-card"><div class="analytic-num">2.9K</div><div class="analytic-label">Saves</div></div>
+          <div class="analytic-card"><div class="analytic-num">11x</div><div class="analytic-label">ROAS</div></div>
+          <div class="analytic-card"><div class="analytic-num">103K</div><div class="analytic-label">Plays</div></div>
+          <div class="analytic-card"><div class="analytic-num">4.8K</div><div class="analytic-label">Comments</div></div>
+          <div class="analytic-card"><div class="analytic-num">340%</div><div class="analytic-label">Growth</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

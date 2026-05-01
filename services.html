@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — 11Eleven Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 80px;
+      align-items: start;
+    }
+    .service-list { display: flex; flex-direction: column; gap: 0; }
+    .service-item {
+      border-top: 1px solid rgba(180,50,58,.2);
+      padding: 28px 0;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 20px;
+      align-items: start;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .service-item:last-child { border-bottom: 1px solid rgba(180,50,58,.2); }
+    .service-num {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--rose);
+      padding-top: 3px;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-style: italic;
+      color: var(--rose);
+      margin-bottom: 6px;
+    }
+    .service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .service-tag {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid rgba(180,50,58,.25);
+      border-radius: 3px;
+      color: var(--text-muted);
+    }
+
+    .services-photo {
+      position: sticky;
+      top: calc(var(--nav-h) + 24px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg,#e8c4bc 0%,#c4787a 50%,#9a4848 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .services-photo-placeholder {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,.7);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .pillars {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 40px 32px 80px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .pillar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .pillar-icon {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--pink-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1px solid rgba(180,50,58,.2);
+    }
+    .pillar-label {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media(max-width:768px){
+      .services-layout{grid-template-columns:1fr;}
+      .services-photo{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title reveal">MY SERVICES</h1>
+
+  <div class="services-layout">
+    <div class="service-list reveal">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div>
+          <div class="service-name">Short Form Video Content</div>
+          <p class="service-desc">One-off, multi-package or retainer based partnerships. All formats tailored to your brand voice and current marketing objectives. Created with ROAS and customer trust prioritised.</p>
+          <div class="service-tags">
+            <span class="service-tag">Reels</span>
+            <span class="service-tag">TikToks</span>
+            <span class="service-tag">YouTube Shorts</span>
+            <span class="service-tag">Raw Footage</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div>
+          <div class="service-name">Photography Packages</div>
+          <p class="service-desc">Sets of 6, 10, 15, 20 or more to showcase your product or service organically on social, website or print. Lifestyle, product, and editorial styles available.</p>
+          <div class="service-tags">
+            <span class="service-tag">Product</span>
+            <span class="service-tag">Lifestyle</span>
+            <span class="service-tag">Editorial</span>
+            <span class="service-tag">Flat Lay</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div>
+          <div class="service-name">In Person Shoots</div>
+          <p class="service-desc">Whether that is a dentist, salon or restaurant — we can be on location to film shoots, create immersive content, or assist with planned marketing campaigns.</p>
+          <div class="service-tags">
+            <span class="service-tag">On-Location</span>
+            <span class="service-tag">Events</span>
+            <span class="service-tag">Launches</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">04</div>
+        <div>
+          <div class="service-name">Ad Ons</div>
+          <p class="service-desc">Whatever else you need: ad usage rights, additional hooks or CTAs, raw footage, voice over, content ideas, strategies — you name it!</p>
+          <div class="service-tags">
+            <span class="service-tag">Ad Rights</span>
+            <span class="service-tag">Strategy</span>
+            <span class="service-tag">Hooks</span>
+            <span class="service-tag">Voice Over</span>
+          </div>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">05</div>
+        <div>
+          <div class="service-name">Full Social Management</div>
+          <p class="service-desc">End-to-end social media management including strategy, content calendar, posting, community management, paid ads, and monthly performance reporting.</p>
+          <div class="service-tags">
+            <span class="service-tag">Strategy</span>
+            <span class="service-tag">Posting</span>
+            <span class="service-tag">Community</span>
+            <span class="service-tag">Paid Ads</span>
+            <span class="service-tag">Reporting</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="services-photo">
+      <div class="services-photo-placeholder">
+        Add your<br/>photo here<br/><br/>
+        <small style="font-size:11px;opacity:.6">Replace with &lt;img&gt;</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillars reveal">
+    <div class="pillar"><div class="pillar-icon">🎯</div><div class="pillar-label">Conversion<br/>Focused</div></div>
+    <div class="pillar"><div class="pillar-icon">📖</div><div class="pillar-label">Story<br/>telling</div></div>
+    <div class="pillar"><div class="pillar-icon">💬</div><div class="pillar-label">Relatable<br/>Content</div></div>
+    <div class="pillar"><div class="pillar-icon">📊</div><div class="pillar-label">Data<br/>Driven</div></div>
+    <div class="pillar"><div class="pillar-icon">✨</div><div class="pillar-label">Trend<br/>Led</div></div>
+  </div>
+
+  <div style="text-align:center;padding:0 32px 80px;">
+    <a href="contact.html" class="btn btn-solid">Book a Discovery Call</a>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

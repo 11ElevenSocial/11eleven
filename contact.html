@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — 11Eleven Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      gap: 0;
+    }
+    .contact-left {
+      background: var(--pink-mid);
+      padding: 80px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+    }
+    .contact-photo-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(160deg,#e0b8b2 0%,#b86060 100%);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .contact-photo-wrap img { width:100%;height:100%;object-fit:cover;border-radius:0; }
+    .contact-info { display: flex; flex-direction: column; gap: 16px; }
+    .contact-row { display: flex; align-items: center; gap: 14px; }
+    .contact-icon { font-size: 18px; width: 36px; text-align: center; flex-shrink: 0; }
+    .contact-row-text strong { display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--rose); margin-bottom: 2px; }
+    .contact-row-text a, .contact-row-text span { font-size: 14px; color: var(--text-muted); }
+    .contact-row-text a:hover { color: var(--rose); }
+
+    .contact-right {
+      background: var(--pink-bg);
+      padding: 80px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .contact-right h1 {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6vw, 80px);
+      font-style: italic;
+      color: var(--rose);
+      line-height: 0.95;
+      margin-bottom: 32px;
+    }
+
+    .form { display: flex; flex-direction: column; gap: 18px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--pink-light);
+      border: 1.5px solid rgba(180,50,58,.2);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color .2s;
+      resize: vertical;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--rose); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(122,82,86,.5); }
+    .form-success {
+      display: none;
+      background: rgba(180,50,58,.08);
+      border: 1px solid rgba(180,50,58,.25);
+      color: var(--rose);
+      padding: 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    @media(max-width:768px){
+      .contact-layout{grid-template-columns:1fr;}
+      .contact-left{padding:48px 24px;}
+      .contact-right{padding:48px 24px;}
+      .form-row{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-layout">
+    <div class="contact-left reveal">
+      <div class="contact-photo-wrap">
+        <span style="font-family:var(--font-display);font-style:italic;color:rgba(255,255,255,.7);font-size:14px;padding:20px;text-align:center;">Add photo here<br/><small style="font-size:11px;opacity:.7">Replace with &lt;img&gt;</small></span>
+      </div>
+      <div class="contact-info">
+        <div class="contact-row">
+          <div class="contact-icon">✉</div>
+          <div class="contact-row-text">
+            <strong>Email</strong>
+            <a href="mailto:hello@11elevensocial.com">hello@11elevensocial.com</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📸</div>
+          <div class="contact-row-text">
+            <strong>Instagram</strong>
+            <a href="#">@11elevensocial</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🎵</div>
+          <div class="contact-row-text">
+            <strong>TikTok</strong>
+            <a href="#">@11elevensocial</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div class="contact-row-text">
+            <strong>Location</strong>
+            <span>Mumbai · Delhi · Remote Worldwide</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right reveal">
+      <h1>LET'S<br/>CONNECT</h1>
+
+      <form class="form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="e.g. Aisha Sharma" required />
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="you@brand.com" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Brand / Company</label>
+          <input type="text" placeholder="Your brand name" />
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Short Form Video Content</option>
+            <option>Photography Package</option>
+            <option>In Person Shoot</option>
+            <option>Full Social Management</option>
+            <option>Paid Social Ads</option>
+            <option>Influencer Marketing</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell me more</label>
+          <textarea rows="4" placeholder="Share your goals, timeline, or anything else..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-solid" style="border:none;cursor:pointer;font-size:13px;letter-spacing:1.5px;">CLICK HERE TO GET IN TOUCH →</button>
+        <div class="form-success" id="formSuccess">✓ Message sent! I'll be in touch within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

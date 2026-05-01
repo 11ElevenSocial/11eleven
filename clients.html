@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Past Clients — 11Eleven Social</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .logo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 0 32px 48px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo-item {
+      flex: 0 0 auto;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-item span {
+      font-size: clamp(13px, 2vw, 18px);
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: .5px;
+      white-space: nowrap;
+      transition: color .2s;
+    }
+    .logo-item:hover span { color: var(--rose); }
+
+    /* Stylised brand names like the original */
+    .logo-item.serif span   { font-family: var(--font-display); font-style: italic; font-size: clamp(16px,2.5vw,24px); }
+    .logo-item.caps span    { letter-spacing: 3px; text-transform: uppercase; font-size: clamp(11px,1.5vw,14px); }
+    .logo-item.script span  { font-family: var(--font-display); font-style: italic; color: var(--rose); font-size: clamp(16px,2.5vw,22px); }
+    .logo-item.bold span    { font-weight: 800; font-size: clamp(14px,2vw,20px); }
+    .logo-item.light span   { font-weight: 300; letter-spacing: 4px; text-transform: uppercase; font-size: clamp(11px,1.5vw,14px); }
+  </style>
+</head>
+<body>
+
+  <h1 class="page-title reveal">PAST CLIENTS</h1>
+
+  <div class="logo-grid reveal">
+    <!-- Row 1 -->
+    <div class="logo-item serif"><span>Luxe Studio</span></div>
+    <div class="logo-item caps"><span>ELLE Parfums</span></div>
+    <div class="logo-item bold"><span>Meta</span></div>
+    <div class="logo-item light"><span>alya skin.</span></div>
+    <div class="logo-item caps"><span>SKIN1004</span></div>
+    <div class="logo-item bold"><span>REVLON</span></div>
+    <!-- Row 2 -->
+    <div class="logo-item script"><span>Hollywood Secrets</span></div>
+    <div class="logo-item bold"><span>GROWTHBOMB</span></div>
+    <div class="logo-item script"><span>lashfridays.</span></div>
+    <div class="logo-item caps"><span>JSHEALTH</span></div>
+    <!-- Row 3 -->
+    <div class="logo-item light"><span>OIL GARDEN</span></div>
+    <div class="logo-item serif"><span>Beauty Amora</span></div>
+    <div class="logo-item script"><span>malia hair.</span></div>
+    <div class="logo-item serif"><span>Casa Palmas</span></div>
+    <div class="logo-item bold"><span>hey bud.</span></div>
+    <!-- Row 4 -->
+    <div class="logo-item caps"><span>SIGHTSEEING TOURS</span></div>
+    <div class="logo-item bold"><span>SKINHAPPY</span></div>
+    <div class="logo-item caps"><span>73FLY</span></div>
+    <div class="logo-item serif"><span>Dr. Clear Aligners</span></div>
+    <div class="logo-item light"><span>LUCENT GLOBE</span></div>
+    <div class="logo-item bold"><span>HASK</span></div>
+    <!-- Row 5 – add your own -->
+    <div class="logo-item script"><span>NovaSkin</span></div>
+    <div class="logo-item caps"><span>EMBER EATS</span></div>
+    <div class="logo-item serif"><span>FlowDesk</span></div>
+    <div class="logo-item bold"><span>BLOOM Co.</span></div>
+    <div class="logo-item light"><span>AURA WELLNESS</span></div>
+    <div class="logo-item script"><span>The Knotted Table</span></div>
+  </div>
+
+  <div style="text-align:center; padding: 8px 32px 72px;">
+    <p style="font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;">Want to join the list?</p>
+    <a href="contact.html" class="btn btn-solid">Work With Us</a>
+  </div>
+
+  <script src="shared.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

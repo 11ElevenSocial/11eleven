@@ -3,57 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content — 11Eleven Social</title>
+  <title>Our Work — 11Eleven Social</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .video-section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 56px;
+    }
+
+    .video-section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .video-section + .video-section {
+      padding-top: 8px;
+    }
+
+    /* 4 videos in one row */
+    .video-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--pink-mid);
+      aspect-ratio: 9/16;
+      cursor: pointer;
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-card .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(42, 20, 24, 0.22);
+      transition: background 0.2s;
+    }
+    .video-card .play-btn svg {
+      width: 40px;
+      height: 40px;
+      fill: white;
+      opacity: 0.9;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .video-card:hover .play-btn { background: rgba(42, 20, 24, 0.08); }
+    .video-card:hover .play-btn svg { transform: scale(1.12); opacity: 1; }
+    .video-card.playing .play-btn { display: none; }
+
+    /* Divider between category rows */
+    .row-divider {
+      border: none;
+      border-top: 1px solid rgba(180,50,58,.12);
+      margin: 40px 0 40px;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner {
+      position: relative;
+      max-height: 90vh;
+      max-width: 420px;
+      width: 90vw;
+    }
+    .lightbox-inner video {
+      width: 100%;
+      height: auto;
+      max-height: 88vh;
+      border-radius: 12px;
+      display: block;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    /* Mobile: 2 columns, 2 rows = 4 videos per section */
+    @media (max-width: 768px) {
+      .video-section { padding: 0 16px 48px; }
+      .video-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1 class="page-title reveal">CONTENT</h1>
 
-  <div class="container">
-    <div style="margin-bottom:56px;" class="reveal">
-      <p class="gallery-tag" style="text-align:left;font-size:13px;color:var(--rose);font-weight:600;letter-spacing:2px;margin-bottom:20px;">ORGANIC SOCIAL</p>
-      <div class="gallery-row">
-        <div class="gcard ph-1"><div class="gcard-label">Reels</div></div>
-        <div class="gcard ph-2"><div class="gcard-label">Stories</div></div>
-        <div class="gcard ph-3"><div class="gcard-label">Carousels</div></div>
-        <div class="gcard ph-4"><div class="gcard-label">UGC</div></div>
-        <div class="gcard ph-5"><div class="gcard-label">TikTok</div></div>
+  <h1 class="page-title reveal">OUR WORK</h1>
+
+  <!-- ── CATEGORY 1 ── -->
+  <div class="video-section reveal">
+    <p class="video-section-label">Organic Social</p>
+    <div class="video-row">
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video1.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <p class="gallery-tag">INSTAGRAM · TIKTOK · YOUTUBE SHORTS</p>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video2.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video3.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video4.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
     </div>
+  </div>
 
-    <div style="margin-bottom:56px;" class="reveal">
-      <p class="gallery-tag" style="text-align:left;font-size:13px;color:var(--rose);font-weight:600;letter-spacing:2px;margin-bottom:20px;">BRAND CONTENT</p>
-      <div class="gallery-row">
-        <div class="gcard ph-3"><div class="gcard-label">Lifestyle</div></div>
-        <div class="gcard ph-1"><div class="gcard-label">Product</div></div>
-        <div class="gcard ph-5"><div class="gcard-label">Tutorials</div></div>
-        <div class="gcard ph-2"><div class="gcard-label">GRWM</div></div>
-        <div class="gcard ph-4"><div class="gcard-label">Unboxing</div></div>
+  <hr class="row-divider" style="max-width:var(--max-w);margin:0 auto 40px;" />
+
+  <!-- ── CATEGORY 2 ── -->
+  <div class="video-section reveal">
+    <p class="video-section-label">Brand Content</p>
+    <div class="video-row">
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video5.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <p class="gallery-tag">SKINCARE · FASHION · LIFESTYLE · TECH · F&B</p>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video6.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video7.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video8.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
     </div>
+  </div>
 
-    <div style="margin-bottom:72px;" class="reveal">
-      <p class="gallery-tag" style="text-align:left;font-size:13px;color:var(--rose);font-weight:600;letter-spacing:2px;margin-bottom:20px;">PHOTOGRAPHY</p>
-      <div class="gallery-row">
-        <div class="gcard ph-2" style="aspect-ratio:1/1"><div class="gcard-label">Editorial</div></div>
-        <div class="gcard ph-4" style="aspect-ratio:1/1"><div class="gcard-label">Product</div></div>
-        <div class="gcard ph-1" style="aspect-ratio:1/1"><div class="gcard-label">Flat Lay</div></div>
-        <div class="gcard ph-5" style="aspect-ratio:1/1"><div class="gcard-label">Portrait</div></div>
-        <div class="gcard ph-3" style="aspect-ratio:1/1"><div class="gcard-label">BTS</div></div>
+  <hr class="row-divider" style="max-width:var(--max-w);margin:0 auto 40px;" />
+
+  <!-- ── CATEGORY 3 ── -->
+  <div class="video-section reveal">
+    <p class="video-section-label">Campaigns &amp; Paid</p>
+    <div class="video-row">
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video9.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
-      <p class="gallery-tag">PRODUCT · EDITORIAL · LIFESTYLE</p>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video10.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video11.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-card" onclick="openLightbox(this)">
+        <video src="videos/video12.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+      <video id="lightboxVideo" controls playsinline autoplay></video>
     </div>
   </div>
 
   <div style="text-align:center;padding:0 32px 80px;">
-    <a href="contact.html" class="btn btn-solid">Book a Content Shoot</a>
+    <a href="contact.html" class="btn btn-solid">Work With Us</a>
   </div>
 
   <script src="shared.js"></script>
   <script src="main.js"></script>
+  <script>
+    function openLightbox(card) {
+      const src = card.querySelector('video').src;
+      const lbVideo = document.getElementById('lightboxVideo');
+      lbVideo.src = src;
+      lbVideo.play();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+      const lbVideo = document.getElementById('lightboxVideo');
+      lbVideo.pause();
+      lbVideo.src = '';
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
 </body>
 </html>

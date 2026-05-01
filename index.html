@@ -275,7 +275,7 @@
   <!-- Lightbox -->
   <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:9999;align-items:center;justify-content:center;" onclick="closeLightbox(event)">
     <div style="position:relative;max-height:90vh;max-width:420px;width:92vw;">
-      <button onclick="closeLightbox()" style="position:absolute;top:-44px;right:0;background:none;border:none;color:white;font-size:30px;cursor:pointer;padding:8px;">&#x2715;</button>
+      <button id="lbClose" style="position:absolute;top:-44px;right:0;background:none;border:none;color:white;font-size:30px;cursor:pointer;padding:8px;">&#x2715;</button>
       <video id="lightboxVideo" controls playsinline style="width:100%;height:auto;max-height:88vh;border-radius:12px;display:block;"></video>
     </div>
   </div>
@@ -291,32 +291,34 @@
 
   <script src="shared.js"></script>
   <script src="main.js"></script>
+
   <script>
-    // Force thumbnail on mobile
-    document.querySelectorAll('.index-video-card video').forEach(v => {
-      v.load();
-      v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
+    // Thumbnail: seek to first frame
+    document.querySelectorAll('video[src]').forEach(function(v) {
+      v.addEventListener('loadedmetadata', function() { v.currentTime = 0.1; });
     });
 
-    function openLightbox(card) {
-      const video = card.querySelector('video');
-      if (!video.readyState && video.networkState === 3) return; // no file, do nothing
-      const src = video.src;
-      if (!src || src.endsWith('/')) return;
-      const lbVideo = document.getElementById('lightboxVideo');
-      lbVideo.src = src;
-      const lb = document.getElementById('lightbox'); lb.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      lbVideo.play().catch(() => {});
-    }
-    function closeLightbox(e) {
-      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
-      const lbVideo = document.getElementById('lightboxVideo');
-      lbVideo.pause();
-      lbVideo.src = '';
-      document.getElementById('lightbox').style.display = 'none';
-      document.body.style.overflow = '';
-    }
+    // Attach click to every card
+    document.querySelectorAll('.index-video-card, .video-card').forEach(function(card) {
+      card.style.cursor = 'pointer';
+      card.addEventListener('click', function() {
+        var src = card.querySelector('video').getAttribute('src');
+        var lb = document.getElementById('lightbox');
+        var lv = document.getElementById('lightboxVideo');
+        lv.src = src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close lightbox
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this || e.target.id === 'lbClose') {
+        document.getElementById('lightboxVideo').src = '';
+        this.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
   </script>
 </body>
 </html>

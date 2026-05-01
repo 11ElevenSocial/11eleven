@@ -13,7 +13,6 @@
       margin: 0 auto;
       padding: 0 32px 56px;
     }
-
     .video-section-label {
       font-size: 11px;
       letter-spacing: 3px;
@@ -22,19 +21,11 @@
       font-weight: 600;
       margin-bottom: 16px;
     }
-
-    .video-section + .video-section {
-      padding-top: 8px;
-    }
-
-    /* 4 videos in one row */
     .video-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin-bottom: 12px;
     }
-
     .video-card {
       position: relative;
       border-radius: var(--radius);
@@ -43,40 +34,39 @@
       aspect-ratio: 9/16;
       cursor: pointer;
     }
-
     .video-card video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      /* Force thumbnail to render on mobile */
+      -webkit-playsinline: true;
     }
-
     .video-card .play-btn {
       position: absolute;
       inset: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(42, 20, 24, 0.22);
+      background: rgba(0,0,0,0.20);
       transition: background 0.2s;
     }
     .video-card .play-btn svg {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       fill: white;
-      opacity: 0.9;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+      opacity: 0.92;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
       transition: transform 0.2s, opacity 0.2s;
     }
-    .video-card:hover .play-btn { background: rgba(42, 20, 24, 0.08); }
+    .video-card:hover .play-btn { background: rgba(0,0,0,0.06); }
     .video-card:hover .play-btn svg { transform: scale(1.12); opacity: 1; }
-    .video-card.playing .play-btn { display: none; }
 
-    /* Divider between category rows */
     .row-divider {
       border: none;
-      border-top: 1px solid rgba(180,50,58,.12);
-      margin: 40px 0 40px;
+      border-top: 1px solid rgba(0,0,0,.08);
+      max-width: var(--max-w);
+      margin: 0 auto 48px;
     }
 
     /* Lightbox */
@@ -84,7 +74,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.92);
+      background: rgba(0,0,0,0.93);
       z-index: 9999;
       align-items: center;
       justify-content: center;
@@ -94,7 +84,7 @@
       position: relative;
       max-height: 90vh;
       max-width: 420px;
-      width: 90vw;
+      width: 92vw;
     }
     .lightbox-inner video {
       width: 100%;
@@ -105,23 +95,26 @@
     }
     .lightbox-close {
       position: absolute;
-      top: -40px;
+      top: -44px;
       right: 0;
       background: none;
       border: none;
       color: white;
-      font-size: 28px;
+      font-size: 30px;
       cursor: pointer;
       line-height: 1;
+      padding: 8px;
     }
 
-    /* Mobile: 2 columns, 2 rows = 4 videos per section */
+    /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .video-section { padding: 0 16px 48px; }
+      .video-section { padding: 0 14px 44px; }
       .video-row {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
       }
+      .video-card .play-btn svg { width: 36px; height: 36px; }
+      .row-divider { margin: 0 14px 40px; }
     }
   </style>
 </head>
@@ -152,7 +145,7 @@
     </div>
   </div>
 
-  <hr class="row-divider" style="max-width:var(--max-w);margin:0 auto 40px;" />
+  <hr class="row-divider" />
 
   <!-- ── CATEGORY 2 ── -->
   <div class="video-section reveal">
@@ -177,7 +170,7 @@
     </div>
   </div>
 
-  <hr class="row-divider" style="max-width:var(--max-w);margin:0 auto 40px;" />
+  <hr class="row-divider" />
 
   <!-- ── CATEGORY 3 ── -->
   <div class="video-section reveal">
@@ -217,6 +210,12 @@
   <script src="shared.js"></script>
   <script src="main.js"></script>
   <script>
+    // Force thumbnail generation on iOS/Android
+    document.querySelectorAll('.video-card video').forEach(v => {
+      v.load();
+      v.addEventListener('loadedmetadata', () => { v.currentTime = 0.1; });
+    });
+
     function openLightbox(card) {
       const src = card.querySelector('video').src;
       const lbVideo = document.getElementById('lightboxVideo');
@@ -225,7 +224,6 @@
       document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-
     function closeLightbox(e) {
       if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
       const lbVideo = document.getElementById('lightboxVideo');

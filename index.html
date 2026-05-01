@@ -9,17 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ── PAGE-SPECIFIC ── */
+    /* ── HERO ── */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: calc(100vh - var(--nav-h));
       overflow: hidden;
     }
-
-    /* Left pane */
     .hero-left {
-      padding: 60px 48px 60px 48px;
+      padding: 60px 48px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -27,7 +25,6 @@
       position: relative;
       z-index: 1;
     }
-
     .hero-eyebrow {
       display: flex;
       gap: 24px;
@@ -37,19 +34,9 @@
       color: var(--text-muted);
       margin-bottom: 20px;
     }
-
-    .hero-year {
-      position: absolute;
-      top: 56px;
-      right: 48px;
-      font-size: 11px;
-      letter-spacing: 2px;
-      color: var(--text-muted);
-    }
-
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(64px, 8vw, 110px);
+      font-size: clamp(48px, 7vw, 110px);
       font-weight: 700;
       font-style: italic;
       color: var(--rose);
@@ -57,14 +44,8 @@
       margin-bottom: 40px;
       letter-spacing: -1px;
     }
-
     .hero-qa { display: flex; flex-direction: column; gap: 28px; }
-
-    .hero-q {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
+    .hero-q { display: flex; gap: 16px; align-items: flex-start; }
     .hero-q-dot {
       width: 10px; height: 10px;
       border-radius: 50%;
@@ -86,8 +67,6 @@
       line-height: 1.6;
       max-width: 340px;
     }
-
-    /* Right pane — photo */
     .hero-right {
       position: relative;
       overflow: hidden;
@@ -98,52 +77,20 @@
       object-fit: cover;
       object-position: top center;
       border-radius: 0;
-      filter: none;
     }
-    .hero-photo-bg {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(160deg, #e8c4bc 0%, #c4787a 50%, #9a4848 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-photo-placeholder {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-style: italic;
-      color: rgba(255,255,255,0.7);
-      text-align: center;
-      padding: 32px;
-    }
-
-    /* floating thumbnail */
-    .hero-thumb {
-      position: absolute;
-      bottom: 32px;
-      left: -40px;
-      width: 100px;
-      aspect-ratio: 1;
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,.2);
-      background: linear-gradient(135deg,#f2bdb8,#d47878);
-      border: 3px solid var(--white);
-    }
-    .hero-thumb img { width:100%;height:100%;object-fit:cover; }
 
     /* ── STATS BAR ── */
     .stats {
       display: flex;
       background: var(--pink-mid);
-      border-top: 1px solid rgba(180,50,58,.12);
-      border-bottom: 1px solid rgba(180,50,58,.12);
+      border-top: 1px solid rgba(0,0,0,.08);
+      border-bottom: 1px solid rgba(0,0,0,.08);
     }
     .stat-item {
       flex: 1;
       text-align: center;
       padding: 28px 16px;
-      border-right: 1px solid rgba(180,50,58,.12);
+      border-right: 1px solid rgba(0,0,0,.08);
     }
     .stat-item:last-child { border-right: none; }
     .stat-num {
@@ -161,51 +108,100 @@
       margin-top: 6px;
     }
 
+    /* ── VIDEO SECTION ON INDEX ── */
+    .index-video-section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 56px 32px 64px;
+    }
+    .index-video-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .index-video-row {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 10px;
+    }
+    .index-video-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--pink-mid);
+      aspect-ratio: 9/16;
+      cursor: pointer;
+    }
+    .index-video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .index-video-card .play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.18);
+      transition: background 0.2s;
+    }
+    .index-video-card .play-btn svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
+      opacity: 0.9;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+      transition: transform 0.2s;
+    }
+    .index-video-card:hover .play-btn { background: rgba(0,0,0,0.06); }
+    .index-video-card:hover .play-btn svg { transform: scale(1.12); }
+
+    /* ── MOBILE ── */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-right { height: 55vw; min-height: 260px; }
-      .hero-left { padding: 40px 24px; }
-      .hero-year { display: none; }
+      .hero-right { height: 70vw; min-height: 280px; }
+      .hero-left { padding: 36px 20px; }
       .stats { flex-wrap: wrap; }
-      .stat-item { flex: 1 1 50%; border-bottom: 1px solid rgba(180,50,58,.12); }
+      .stat-item { flex: 1 1 50%; border-bottom: 1px solid rgba(0,0,0,.08); }
+      .index-video-section { padding: 40px 16px 48px; }
+      .index-video-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- hero -->
   <section class="hero">
     <div class="hero-left reveal">
       <div class="hero-eyebrow">
         <span>Marketing Agency</span>
         <span>11 Eleven Social</span>
       </div>
-
       <h1 class="hero-headline">Creative<br/>Marketing<br/>Agency</h1>
-
       <div class="hero-qa">
         <div class="hero-q">
-          <div>
-            <div class="hero-q-dot"></div>
-          </div>
+          <div><div class="hero-q-dot"></div></div>
           <div>
             <div class="hero-q-label">Who We Are</div>
             <p class="hero-q-body">We're 11:11 Social, a full-service marketing agency specializing in building tailor-made marketing strategies for your brand.</p>
           </div>
         </div>
         <div class="hero-q">
-          <div>
-            <div class="hero-q-dot"></div>
-          </div>
+          <div><div class="hero-q-dot"></div></div>
           <div>
             <div class="hero-q-label">What We Do</div>
             <p class="hero-q-body">We create scroll-stopping content, manage your presence across every platform, and build communities that convert followers into loyal customers.</p>
           </div>
         </div>
         <div class="hero-q">
-          <div>
-            <div class="hero-q-dot"></div>
-          </div>
+          <div><div class="hero-q-dot"></div></div>
           <div>
             <div class="hero-q-label">How We Can Help</div>
             <p class="hero-q-body">Whether you need a full brand overhaul or just killer content — we craft strategies that highlight your unique story and drive real results.</p>
@@ -213,14 +209,11 @@
         </div>
       </div>
     </div>
-
     <div class="hero-right">
       <img class="hero-photo" src="mainpage.png" alt="11Eleven Social" />
-      </div>
     </div>
   </section>
 
-  <!-- stats bar -->
   <div class="stats">
     <div class="stat-item reveal">
       <div class="stat-num" data-target="100">0</div><span class="stat-num" style="font-size:1em">+</span>
@@ -240,17 +233,81 @@
     </div>
   </div>
 
-  <!-- bottom cta row -->
-  <div style="text-align:center; padding: 64px 32px 80px; background: var(--pink-light);">
-    <p class="reveal" style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px;">Ready to grow?</p>
-    <h2 class="reveal section-title" style="margin-bottom:28px;">Let's build something<br/><em>remarkable</em> together.</h2>
+  <!-- 8-video preview row -->
+  <div class="index-video-section reveal">
+    <p class="index-video-label">Featured Work</p>
+    <div class="index-video-row">
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video1.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video2.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video3.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video4.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video5.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video6.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video7.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="index-video-card" onclick="openLightbox(this)">
+        <video src="videos/video8.mp4" preload="metadata" playsinline muted></video>
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+      <video id="lightboxVideo" controls playsinline autoplay></video>
+    </div>
+  </div>
+
+  <div style="text-align:center; padding: 0 32px 80px; background: var(--pink-light);">
+    <p class="reveal" style="font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--white);margin-bottom:16px;padding-top:64px;">Ready to grow?</p>
+    <h2 class="reveal section-title" style="margin-bottom:28px;color:var(--white);">Let's build something<br/><em>remarkable</em> together.</h2>
     <div class="reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="contact.html" class="btn btn-solid">Get In Touch</a>
-      <a href="clients.html" class="btn">See Our Work</a>
+      <a href="clients.html" class="btn" style="border-color:var(--white);color:var(--white);">See Our Work</a>
     </div>
   </div>
 
   <script src="shared.js"></script>
   <script src="main.js"></script>
+  <script>
+    function openLightbox(card) {
+      const src = card.querySelector('video').src;
+      const lbVideo = document.getElementById('lightboxVideo');
+      lbVideo.src = src;
+      lbVideo.play();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+      const lbVideo = document.getElementById('lightboxVideo');
+      lbVideo.pause();
+      lbVideo.src = '';
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  </script>
 </body>
 </html>

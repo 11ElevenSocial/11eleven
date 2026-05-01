@@ -20,7 +20,7 @@
   --font-body:     'DM Sans', sans-serif;        /* body text     */
 
   /* Layout */
-  --nav-h:         60px;
+  --nav-h:         100px;
   --max-w:         1140px;
   --radius:        10px;
   --section-pad:   80px 40px;
@@ -120,7 +120,7 @@ img  { max-width: 100%; display: block; border-radius: 6px; }
 }
 
 .nav-logo {
-  height: 256px;
+  height: 80px;
   width: auto;
   display: block;
   object-fit: contain;
@@ -267,4 +267,36 @@ img  { max-width: 100%; display: block; border-radius: 6px; }
   .nav-list   { display: none; }
   .nav-burger { display: flex; }
   .container  { padding: 0 20px; }
+}
+
+/* ─── GLOBAL MOBILE FIXES ────────────────────────────────── */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: clamp(40px, 12vw, 80px);
+    padding: 36px 20px 28px;
+  }
+  .section-title {
+    font-size: clamp(24px, 7vw, 40px);
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+  .nav-inner {
+    padding: 0 16px;
+  }
+  .nav-logo {
+    height: 60px;
+    margin-top: 16px;
+  }
+  .site-footer {
+    padding: 40px 20px 28px;
+  }
+  .footer-links {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .brands-section {
+    padding: 0 12px 48px;
+  }
 }

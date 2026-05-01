@@ -6,17 +6,17 @@
 /* ─── CUSTOMISE HERE ─────────────────────────────────────── */
 :root {
   /* Brand palette */
-  --pink-bg:       #f9e8e4;       /* main page background   */
-  --pink-light:    #fdf3f0;       /* lighter section bg     */
-  --pink-mid:      #f2d4cc;       /* cards / accents        */
-  --rose:          #b5323a;       /* headline / accent red  */
-  --rose-dark:     #8a1f26;       /* hover / dark text      */
-  --text:          #2a1418;       /* body text              */
-  --text-muted:    #7a5256;       /* subtext                */
+  --pink-bg:       #f4ebdf;       /* main page background   */
+  --pink-light:    #6b859b;       /* lighter section bg     */
+  --pink-mid:      #93b1c2;       /* cards / accents        */
+  --rose:          #000000;       /* headline / accent red  */
+  --rose-dark:     #000000;       /* hover / dark text      */
+  --text:          #000000;       /* body text              */
+  --text-muted:    #414447;       /* subtext                */
   --white:         #ffffff;
 
   /* Typography */
-  --font-display:  'Playfair Display', serif;   /* big headlines */
+  --font-display:  'Advercase', serif;   /* big headlines */
   --font-body:     'DM Sans', sans-serif;        /* body text     */
 
   /* Layout */
@@ -52,7 +52,6 @@ img  { max-width: 100%; display: block; border-radius: 6px; }
   font-size:   clamp(52px, 9vw, 120px);
   color:       var(--rose);
   font-weight: 700;
-  font-style:  italic;
   line-height: 0.95;
   letter-spacing: -1px;
   text-align:  center;
@@ -121,12 +120,12 @@ img  { max-width: 100%; display: block; border-radius: 6px; }
 }
 
 .nav-logo {
-  height: 128px;
+  height: 256px;
   width: auto;
   display: block;
   object-fit: contain;
   flex-shrink: 0;
-  margin-top: 48px;
+  margin-top: 20px;
 }
 
 .nav-brand {

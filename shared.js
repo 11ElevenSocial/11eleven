@@ -2,23 +2,23 @@
 // Edit SITE_CONFIG to customise every page at once
 
 const SITE_CONFIG = {
-  brandName:    "11ELEVEN SOCIAL",
-  tagline:      "Social Media Agency",
-  email:        "hello@11elevensocial.com",
-  instagram:    "@11elevensocial",
+  brandName:    "11 ELEVEN SOCIAL",
+  tagline:      "Creative Marketing Agency",
+  email:        "sales@11elevensocial.in",
+  instagram:    "@11eleven.social",
   tiktok:       "@11elevensocial",
   linkedin:     "11elevensocial",
-  location:     "Mumbai · Delhi · Remote Worldwide",
+  location:     "Based in Delhi · Servicable Worldwide",
 };
 
 const NAV_LINKS = [
   { label: "About Me",      href: "index.html"       },
   { label: "Past Clients",  href: "clients.html"     },
-  { label: "Content",       href: "content.html"     },
-  { label: "Hospitality",   href: "hospitality.html" },
+  { label: "Our Work",       href: "content.html"     },
+  { label: "Productions",   href: "hospitality.html" },
   { label: "Services",      href: "services.html"    },
-  { label: "Feedback",      href: "feedback.html"    },
-  { label: "Contact",       href: "contact.html"     },
+  { label: "Testimonial",      href: "feedback.html"    },
+  { label: "Get Quote",       href: "contact.html"     },
 ];
 
 function injectNav() {

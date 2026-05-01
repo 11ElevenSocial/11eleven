@@ -120,6 +120,13 @@ img  { max-width: 100%; display: block; border-radius: 6px; }
   border-bottom: 1px solid rgba(180,50,58,.15);
 }
 
+.nav-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .nav-brand {
   font-family:    var(--font-display);
   font-size:      17px;

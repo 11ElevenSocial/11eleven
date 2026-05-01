@@ -26,7 +26,7 @@ function injectNav() {
   const html = `
   <nav class="site-nav" id="siteNav">
     <div class="nav-inner">
-      <a class="nav-brand" href="index.html">${SITE_CONFIG.brandName}</a>
+      <a class="nav-brand" href="index.html"><img src="logo.png" alt="${SITE_CONFIG.brandName}" class="nav-logo" /></a>
       <ul class="nav-list">
         ${NAV_LINKS.map(l => `
           <li><a href="${l.href}" class="${current === l.href ? 'active' : ''}">${l.label}</a></li>

@@ -163,20 +163,8 @@
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-right {
-        height: auto;
-        min-height: unset;
-        order: -1;
-      }
-      .hero-photo {
-        width: 100%;
-        height: auto;
-        max-height: 75vw;
-        object-fit: cover;
-        object-position: center top;
-        display: block;
-      }
+      .hero { grid-template-columns: 1fr; overflow: visible; min-height: unset; }
+
       .hero-left { padding: 32px 20px 40px; }
       .stats { flex-wrap: wrap; }
       .stat-item { flex: 1 1 50%; border-bottom: 1px solid rgba(0,0,0,.08); }
@@ -221,8 +209,8 @@
         </div>
       </div>
     </div>
-    <div class="hero-right">
-      <img class="hero-photo" src="mainpage.png" alt="11Eleven Social" />
+    <div style="width:100%;overflow:hidden;">
+      <img src="mainpage.png" alt="11Eleven Social" style="width:100%;height:auto;display:block;" />
     </div>
   </section>
 

@@ -3,12 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hospitality — 11Eleven Social</title>
+  <title>Production Work — 11Eleven Social</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── 3×2 CATEGORY GRID ── */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 32px 64px;
+    }
+
+    .cat-card {
+      aspect-ratio: 9/16;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--pink-mid);
+    }
+
+    .cat-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .cat-card:hover img { transform: scale(1.04); }
+
+    /* gradient overlay */
+    .cat-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 50%);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    /* placeholder gradients */
+    .cat-card.ph-1 { background: linear-gradient(160deg,#dbb0a8 0%,#b86858 100%); }
+    .cat-card.ph-2 { background: linear-gradient(160deg,#e8c4bc 0%,#d4908a 100%); }
+    .cat-card.ph-3 { background: linear-gradient(160deg,#e0c0b8 0%,#c07070 100%); }
+    .cat-card.ph-4 { background: linear-gradient(160deg,#f0d0c8 0%,#c88080 100%); }
+    .cat-card.ph-5 { background: linear-gradient(160deg,#f4dcd8 0%,#cc9090 100%); }
+    .cat-card.ph-6 { background: linear-gradient(160deg,#ead4d0 0%,#d4a0a0 100%); }
+
+    .cat-label {
+      position: absolute;
+      bottom: 14px;
+      left: 0; right: 0;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    /* ── LIGHTBOX ── */
+    #catLightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.94);
+      z-index: 9999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      overflow-y: auto;
+      padding: 60px 20px 40px;
+    }
+    #catLightbox.open { display: flex; }
+
+    #lbTitle {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-style: italic;
+      color: white;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+
+    #lbClose {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 10000;
+      line-height: 1;
+    }
+
+    #lbGrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    #lbGrid .lb-img-wrap {
+      aspect-ratio: 4/5;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #2a2a2a;
+    }
+
+    #lbGrid .lb-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* mobile */
+    @media (max-width: 768px) {
+      .cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 14px 48px;
+      }
+      #lbGrid { grid-template-columns: repeat(2, 1fr); }
+      #catLightbox { padding: 70px 14px 40px; }
+    }
+  </style>
 </head>
 <body>
+<<<<<<< Updated upstream
   <h1 class="page-title reveal">PRODUCTION WORK</h1>
 
   <div class="container">
@@ -22,25 +154,72 @@
         <div class="gcard ph-6"><div class="gcard-label">e</div></div>
       </div>
       <p class="gallery-tag">CAFÉ · EXPERIENCES · TOURS · RESTAURANTS</p>
+=======
+
+  <h1 class="page-title reveal">PRODUCTION WORK</h1>
+
+  <!--
+    HOW TO ADD IMAGES TO EACH CATEGORY:
+    - Each cat-card has a data-category attribute (e.g. "creative-photoshoots")
+    - Create a folder: images/creative-photoshoots/
+    - Put your images in there named: 1.jpg, 2.jpg, 3.jpg ... up to 9
+    - Update data-count to match how many images you have
+    - Replace the placeholder class (ph-1 etc) with your own cover image:
+        <img src="images/creative-photoshoots/cover.jpg" alt="..." />
+  -->
+
+  <div class="cat-grid reveal">
+
+    <div class="cat-card ph-1" data-category="creative-photoshoots" data-label="Creative Photoshoots" data-count="6">
+      <!-- <img src="images/creative-photoshoots/cover.jpg" alt="Creative Photoshoots" /> -->
+      <div class="cat-label">Creative Photoshoots</div>
+>>>>>>> Stashed changes
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:72px;" class="reveal">
-      <div style="background:var(--pink-mid);border-radius:var(--radius);padding:40px 36px;">
-        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;">What We Offer</p>
-        <h2 class="section-title" style="margin-bottom:20px;">Social for<br/>Food & <em>Drink</em></h2>
-        <p style="color:var(--text-muted);font-size:14px;line-height:1.75;">We specialise in making your venue look irresistible online — from atmosphere reels to menu content that drives foot traffic and reservations.</p>
-      </div>
-      <div style="background:var(--pink-mid);border-radius:var(--radius);padding:40px 36px;">
-        <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;">Deliverables</p>
-        <ul style="display:flex;flex-direction:column;gap:12px;color:var(--text-muted);font-size:14px;">
-          <li>→ Monthly content shoots on-location</li>
-          <li>→ Reels & TikToks with trending audio</li>
-          <li>→ Google & Meta ad campaigns</li>
-          <li>→ Community management & DMs</li>
-          <li>→ Influencer hosting coordination</li>
-          <li>→ Monthly analytics reports</li>
-        </ul>
-      </div>
+    <div class="cat-card ph-2" data-category="catalogue" data-label="Catalogue" data-count="6">
+      <!-- <img src="images/catalogue/cover.jpg" alt="Catalogue" /> -->
+      <div class="cat-label">Catalogue</div>
+    </div>
+
+    <div class="cat-card ph-3" data-category="jewellery" data-label="Jewellery" data-count="6">
+      <!-- <img src="images/jewellery/cover.jpg" alt="Jewellery" /> -->
+      <div class="cat-label">Jewellery</div>
+    </div>
+
+    <div class="cat-card ph-4" data-category="events" data-label="Events" data-count="6">
+      <!-- <img src="images/events/cover.jpg" alt="Events" /> -->
+      <div class="cat-label">Events</div>
+    </div>
+
+    <div class="cat-card ph-5" data-category="food" data-label="Food" data-count="6">
+      <!-- <img src="images/food/cover.jpg" alt="Food" /> -->
+      <div class="cat-label">Food</div>
+    </div>
+
+    <div class="cat-card ph-6" data-category="lifestyle" data-label="Lifestyle" data-count="6">
+      <!-- <img src="images/lifestyle/cover.jpg" alt="Lifestyle" /> -->
+      <div class="cat-label">Lifestyle</div>
+    </div>
+
+  </div>
+
+  <!-- Info cards -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:var(--max-w);margin:0 auto;padding:0 32px 80px;" class="reveal">
+    <div style="background:var(--pink-mid);border-radius:var(--radius);padding:36px;">
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;">What We Offer</p>
+      <h2 class="section-title" style="margin-bottom:20px;">Production<br/>that <em>Converts</em></h2>
+      <p style="color:var(--text-muted);font-size:14px;line-height:1.75;">From editorial shoots to product catalogues — we produce content that stops the scroll and sells.</p>
+    </div>
+    <div style="background:var(--pink-mid);border-radius:var(--radius);padding:36px;">
+      <p style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--rose);margin-bottom:12px;">Deliverables</p>
+      <ul style="display:flex;flex-direction:column;gap:12px;color:var(--text-muted);font-size:14px;">
+        <li>→ On-location creative shoots</li>
+        <li>→ Jewellery & product catalogue photography</li>
+        <li>→ Event coverage & highlights</li>
+        <li>→ Food & beverage photography</li>
+        <li>→ Lifestyle & editorial content</li>
+        <li>→ Full post-production editing</li>
+      </ul>
     </div>
   </div>
 
@@ -48,7 +227,58 @@
     <a href="contact.html" class="btn btn-solid">Enquire Now</a>
   </div>
 
+  <!-- Category Lightbox -->
+  <div id="catLightbox">
+    <button id="lbClose">&#x2715;</button>
+    <div id="lbTitle"></div>
+    <div id="lbGrid"></div>
+  </div>
+
   <script src="shared.js"></script>
   <script src="main.js"></script>
+  <script>
+    // Open lightbox when category card is clicked
+    document.querySelectorAll('.cat-card').forEach(function(card) {
+      card.addEventListener('click', function() {
+        var category = card.getAttribute('data-category');
+        var label    = card.getAttribute('data-label');
+        var count    = parseInt(card.getAttribute('data-count')) || 6;
+
+        document.getElementById('lbTitle').textContent = label;
+
+        var grid = document.getElementById('lbGrid');
+        grid.innerHTML = '';
+
+        for (var i = 1; i <= count; i++) {
+          var wrap = document.createElement('div');
+          wrap.className = 'lb-img-wrap';
+          var img = document.createElement('img');
+          img.src = 'images/' + category + '/' + i + '.jpg';
+          img.alt = label + ' ' + i;
+          img.onerror = function() {
+            this.parentElement.style.background = 'linear-gradient(160deg,#e8c4bc,#c07070)';
+            this.style.display = 'none';
+          };
+          wrap.appendChild(img);
+          grid.appendChild(wrap);
+        }
+
+        document.getElementById('catLightbox').classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    // Close
+    document.getElementById('lbClose').addEventListener('click', function() {
+      document.getElementById('catLightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    document.getElementById('catLightbox').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
 </body>
 </html>

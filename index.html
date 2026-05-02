@@ -164,8 +164,20 @@
     /* ── MOBILE ── */
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-right { height: 70vw; min-height: 280px; }
-      .hero-left { padding: 36px 20px; }
+      .hero-right {
+        height: auto;
+        min-height: unset;
+        order: -1;
+      }
+      .hero-photo {
+        width: 100%;
+        height: auto;
+        max-height: 75vw;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+      }
+      .hero-left { padding: 32px 20px 40px; }
       .stats { flex-wrap: wrap; }
       .stat-item { flex: 1 1 50%; border-bottom: 1px solid rgba(0,0,0,.08); }
       .index-video-section { padding: 40px 16px 48px; }
@@ -238,35 +250,35 @@
     <p class="index-video-label">Featured Work</p>
     <div class="index-video-row">
       <div class="index-video-card">
-        <video src="videos/home1.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home1.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home2.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home2.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home3.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home3.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home4.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home4.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home5.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home5.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home6.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home6.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home7.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home7.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
       <div class="index-video-card">
-        <video src="videos/home8.mp4" preload="metadata" playsinline muted></video>
+        <video src="videos/home8.mp4" preload="metadata" playsinline></video>
         <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       </div>
     </div>
